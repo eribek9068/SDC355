@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header with dynamic welcome message -->
+    <header>
+        <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+    </header>
+
+    <!-- Simple Navigation Menu -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hello! My name is Erick. I am currently studying software development and learning 
+            the fundamentals of JavaScript, HTML, and CSS. This webpage is part of my training 
+            and will grow as I continue learning throughout the course.
+        </p>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are a few of my GitHub projects (or placeholders for now):</p>
+
+        <!-- Placeholder project images with links -->
+        <a href="https://github.com/eribek9068/SDC355/project1" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 1">
+        </a>
+
+        <a href="https://github.com/eribek9068/SDC355/project2" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 2">
+        </a>
+
+        <a href="https://github.com/eribek9068/SDC355/project3" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 3">
+        </a>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <!-- Basic Contact Form -->
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <input type="text" placeholder="Subject" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <!-- BASIC DAY‑1 JAVASCRIPT -->
+    <script>
+        // Prompt the user for their name
+        let userName = prompt("What is your name?");
+
+        // If the user enters a name, update the welcome message
+        if (userName && userName.trim() !== "") {
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome, " + userName + "!";
+        }
+    </script>
+
+</body>
+</html>
