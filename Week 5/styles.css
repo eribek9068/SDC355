@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background: #555;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+img {
+    width: 150px;
+    margin-right: 10px;
+}
+
+form input, form textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 250px;
+    padding: 8px;
+}
+
+.dark-mode {
+    background-color: #111;
+    color: white;
+}
+
+.dark-mode header {
+    background: #000;
+}
+
+.dark-mode nav {
+    background: #222;
+}
+.feature-box {
+    border: 2px solid #333;
+    padding: 15px;
+    margin: 15px 0;
+    background: #f0f0f0;
+}
+
+.dark-mode .feature-box {
+    background: #222;
+    border-color: white;
+}
+/* Modal Overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.dark-mode .modal-content {
+    background: #222;
+    color: white;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    padding: 6px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltip {
+    display: inline-block;
+    position: relative;
+}
+#contactSubmit {
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    bottom: 140%;   /* moves tooltip higher */
+    left: 50%;
+    transform: translateX(-50%);
+}
+#projectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#projectContainer .feature-box {
+    width: 250px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.dark-mode #projectContainer .feature-box {
+    background: #222;
+}
