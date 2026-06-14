@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Welcome Modal -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <p>This page is a work in progress.</p>
+            <button id="closeModalBtn">Close</button>
+        </div>
+    </div>
+
+    <label style="margin: 20px; display: block;">
+        <input type="checkbox" id="darkModeToggle"> Dark Mode
+    </label>
+
+
+    <!-- Header with dynamic welcome message -->
+    <header>
+        <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+    </header>
+
+    <!-- Simple Navigation Menu -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hello! My name is Erick. I am currently studying software development and learning 
+            the fundamentals of JavaScript, HTML, and CSS. This webpage is part of my training 
+            and will grow as I continue learning throughout the course.
+        </p>
+        <h3>My Skills</h3>
+        <ul id="skillsList"></ul>
+
+    </section>
+
+    <!-- FEATURED CONTENT SECTION -->
+    <section id="featured">
+        <h2>Featured Content</h2>
+
+        <div id="universityResources" class="feature-box">
+            <h3>University Resources</h3>
+            <a href="https://www.ecpi.edu/academics/software-development" target="_blank">
+                ECPI Software Development Program
+            </a>
+        </div>
+
+        <div id="personalProjects" class="feature-box">
+            <h3>Personal Projects</h3>
+            <a href="https://github.com/eribek9068" target="_blank">
+                <img src="https://via.placeholder.com/150" alt="My GitHub Project">
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are a few of my GitHub projects (or placeholders for now):</p>
+
+        <!-- Placeholder project images with links -->
+        <a href="https://github.com/eribek9068/SDC355/project1" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 1">
+        </a>
+
+        <a href="https://github.com/eribek9068/SDC355/project2" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 2">
+        </a>
+
+        <a href="https://github.com/eribek9068/SDC355/project3" target="_blank">
+            <img src="https://via.placeholder.com/150" alt="Project 3">
+        </a>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <!-- Basic Contact Form -->
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email Address" required>
+            <input type="text" placeholder="Subject" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <div class="tooltip">
+                <input type="submit" id="contactSubmit" value="Submit">
+                <span class="tooltiptext">Click to send your message!</span>
+            </div>
+
+
+        </form>
+    </section>
+
+    <!-- BASIC DAY‑1 JAVASCRIPT -->
+    <script>
+        // --- Welcome Modal ---
+        const modal = document.getElementById("welcomeModal");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+
+        // Show modal on page load
+        modal.style.visibility = "visible";
+
+        // Close modal
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.visibility = "hidden";
+        });
+
+        // 1. CONDITIONAL LOGIC
+       
+        const projectImages = document.querySelectorAll("#projects img").length;
+        const uniDiv = document.getElementById("universityResources");
+        const personalDiv = document.getElementById("personalProjects");
+
+        if (projectImages < 3) {
+            // Show BOTH
+            uniDiv.style.display = "block";
+            personalDiv.style.display = "block";
+        } else {
+            // Show ONLY personal projects
+            uniDiv.style.display = "none";
+            personalDiv.style.display = "block";
+        }
+
+        // 2. SKILLS LOOP
+
+        const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub"];
+        const skillsList = document.getElementById("skillsList");
+
+        skills.forEach(skill => {
+            const li = document.createElement("li");
+            li.textContent = skill;
+            skillsList.appendChild(li);
+
+            //  Dynamically add a new paragraph to the About section
+            const aboutSection = document.querySelector("#about");
+
+            const newIntro = document.createElement("p");
+            newIntro.textContent =
+                "I recently completed a JavaScript DOM project where I learned how to dynamically update webpage content.";
+
+            aboutSection.appendChild(newIntro);
+            
+            //  Modify the Projects heading
+            const projectHeading = document.querySelector("#projects h2");
+            projectHeading.textContent = "My Updated Projects";
+
+            // Add a border to the Featured Content section
+            const featuredBox = document.getElementById("featured");
+            featuredBox.style.border = "3px solid #4CAF50";
+            featuredBox.style.padding = "10px";
+
+
+        });
+
+        // 3. DARK MODE TOGGLE
+
+        // --- Dark Mode with Persistence ---
+        const darkToggle = document.getElementById("darkModeToggle");
+
+        // Load saved preference
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark-mode");
+            darkToggle.checked = true;
+        }
+
+        darkToggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark-mode");
+
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        });
+
+
+        // 4. CONTACT FORM SUBMIT
+
+        const submitBtn = document.getElementById("contactSubmit");
+        const nameInput = document.querySelector("#contact input[type='text']");
+
+       // Timed confirmation for form submission
+        const form = document.querySelector("#contact form");
+        const statusMsg = document.createElement("p");
+        statusMsg.id = "formStatus";
+        form.appendChild(statusMsg);
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Stop page reload
+
+            statusMsg.textContent = "Sending message...";
+
+            setTimeout(() => {
+                statusMsg.textContent = "Message sent successfully!";
+            }, 2500); // 2.5 seconds
+        });
+
+    </script>
+
+
+</body>
+</html>
